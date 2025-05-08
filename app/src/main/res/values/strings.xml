@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="close">Close</string>
+    <string name="search">Search</string>
+    <string name="delete">Delete</string>
+    <string name="unknown_view_type">Unknown view type</string>
+    <string name="recipe_image_desc">Recipe image description</string>
+    <string name="title">Title</string>
+    <string name="short_desc">Short description</string>
+    <string name="full_desc">Full description</string>
+    <string name="fl">A</string>
+    <string name="first_letter">First letter</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="delete_recipe_message">Are you sure you want to delete %1$s?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 </resources>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppToolbarStyle" parent="Widget.Material3.Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="layout_scrollFlags">scroll|enterAlways</item>
+        <item name="android:background">?attr/colorSurfaceContainer</item>
+        <item name="navigationIconTint">?attr/colorOnSurface</item>
+        <item name="titleTextColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="SearchBarStyle" parent="Widget.Material3.SearchBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/colorSurfaceContainer</item>
+        <item name="backgroundTint">?attr/colorSurfaceContainer</item>
+        <item name="navigationIconTint">?attr/colorOnSurfaceVariant</item>
+        <item name="defaultMarginsEnabled">false</item>
+    </style>
+
+    <style name="RecipeItemCardStyle" parent="Widget.Material3.CardView.Outlined">
+        <item name="android:backgroundTint">?attr/colorSurfaceContainer</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="cardCornerRadius">12dp</item>
+    </style>
+
+    <style name="RecipeItemAvatarStyle">
+        <item name="android:background">@drawable/circle</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/colorOnPrimaryContainer</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+    </style>
+
+    <style name="RecipeItemTitleStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="RecipeItemDescStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lines">1</item>
+        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="RecipeCathegoryStyle">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <style name="RecipeStyle" parent="Widget.Material3.CardView.Outlined">
+        <item name="android:layout_margin">16dp</item>
+        <item name="cardCornerRadius">28dp</item>
+    </style>
+
+    <style name="RecipeTitle">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="RecipeDescription">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="RecipeFullDescription">
+        <item name="android:gravity">top</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">?attr/colorTertiary</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+</resources>

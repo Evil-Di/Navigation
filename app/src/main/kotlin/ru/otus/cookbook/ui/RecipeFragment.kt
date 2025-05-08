@@ -9,14 +9,18 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
+import ru.otus.cookbook.R
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
 
-    private val recipeId: Int get() = TODO("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
-
+    private val args: RecipeFragmentArgs by navArgs()
+    private val recipeId: Int get() = args.recipeId
     private val binding = FragmentBindingDelegate<FragmentRecipeBinding>(this)
     private val model: RecipeFragmentViewModel by viewModels(
         extrasProducer = {
@@ -38,6 +42,19 @@ class RecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupAppBar()
+
+        val navController = findNavController()
+        navController.currentBackStackEntry?.savedStateHandle?.getLiveData<Boolean>(
+            DeleteRecipeDialogFragment.CONFIRMATION_RESULT
+        )?.observe(viewLifecycleOwner) { result->
+            if (result) {
+                model.delete()
+                navController.navigateUp()
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             model.recipe
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
@@ -52,11 +69,32 @@ class RecipeFragment : Fragment() {
         return model.recipe.value.title
     }
 
-    private fun displayRecipe(recipe: Recipe) {
-        // Display the recipe
+    private fun setupAppBar() {
+        binding.withBinding {
+            recipeToolbar.setNavigationOnClickListener {
+                findNavController().navigate(R.id.action_to_cookbook)
+            }
+            recipeToolbar.setOnMenuItemClickListener { menuItem->
+                when (menuItem.itemId) {
+                    R.id.delete -> {
+                        val action = RecipeFragmentDirections.actionToDeleteRecipeDialog(getTitle())
+                        findNavController().navigate(action)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+        }
     }
 
-    private fun deleteRecipe() {
-        model.delete()
+    private fun displayRecipe(recipe: Recipe) = binding.withBinding {
+        // Display the recipe
+        recipeTitle.text = recipe.title
+        recipeShortDescription.text = recipe.category.name
+        recipeFullDescription.text = recipe.description
+        Glide.with(this@RecipeFragment)
+            .load(recipe.imageUrl)
+            .into(recipeImage)
     }
 }

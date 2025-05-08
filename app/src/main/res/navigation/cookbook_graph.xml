@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cookbook_graph"
+    app:startDestination="@id/cookbookFragment">
+
+    <fragment
+        android:id="@+id/cookbookFragment"
+        android:name="ru.otus.cookbook.ui.CookbookFragment"
+        tools:layout="@layout/fragment_cookbook">
+        <action
+            android:id="@+id/action_to_recipeFragment"
+            app:destination="@id/recipeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="ru.otus.cookbook.ui.RecipeFragment"
+        tools:layout="@layout/fragment_recipe">
+        <argument
+            android:name="recipeId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_to_cookbook"
+            app:destination="@id/cookbookFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_to_deleteRecipeDialog"
+            app:destination="@id/deleteRecipeDialog" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/deleteRecipeDialog"
+        android:name="ru.otus.cookbook.ui.DeleteRecipeDialogFragment"
+        android:label="DeleteRecipeDialogFragment" >
+        <argument
+            android:name="recipeTitle"
+            app:argType="string"/>
+    </dialog>
+
+</navigation>
