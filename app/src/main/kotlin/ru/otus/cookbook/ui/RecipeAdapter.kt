@@ -16,13 +16,13 @@ class RecipeAdapter(private val context: Context, private val onRecipeClick: (In
     ListAdapter<RecipeListItem, RecyclerView.ViewHolder>(RecipeDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            ITEMTYPE_RECIPE-> {
+            R.layout.vh_recipe_item-> {
                 val binding =
                     VhRecipeItemBinding.inflate(LayoutInflater.from(context), parent, false)
                 RecipeViewHolder(binding)
             }
 
-            ITEMTYPE_CATEGORY-> {
+            R.layout.vh_recipe_category-> {
                 val binding =
                     VhRecipeCategoryBinding.inflate(LayoutInflater.from(context), parent, false)
                 CategoryViewHolder(binding)
@@ -34,8 +34,8 @@ class RecipeAdapter(private val context: Context, private val onRecipeClick: (In
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            is RecipeListItem.RecipeItem -> ITEMTYPE_RECIPE
-            is RecipeListItem.CategoryItem -> ITEMTYPE_CATEGORY
+            is RecipeListItem.RecipeItem -> R.layout.vh_recipe_item
+            is RecipeListItem.CategoryItem -> R.layout.vh_recipe_category
         }
     }
 
@@ -63,11 +63,6 @@ class RecipeAdapter(private val context: Context, private val onRecipeClick: (In
         fun bind(item: RecipeListItem.CategoryItem) {
             binding.categoryName.text = item.name
         }
-    }
-
-    companion object {
-        const val ITEMTYPE_RECIPE = 1
-        const val ITEMTYPE_CATEGORY = 2
     }
 }
 
